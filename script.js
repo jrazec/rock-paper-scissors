@@ -83,12 +83,10 @@ function playRound(playerChoiceVar,comChoiceVar){
 }
 
 function game(){
-    for(let i = 0; i < 5; i++){
-        let comChoice = getComputerChoice();
-        let playerChoice = prompt("What is your chosen weapon?");
-        playRound(playerChoice,comChoice);
-        console.log(playRound);
-    }
+    let comChoice = getComputerChoice();
+    let playerChoice = prompt("What is your chosen weapon?");
+    playRound(playerChoice,comChoice);
+    console.log(playRound);
 }
 
 game();
