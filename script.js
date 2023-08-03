@@ -54,25 +54,32 @@ function getComputerChoice(){
         return "SCISSORS";
     }
 }
-
+function getPlayerChoice(){
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach((button) => {
+        button.addEventListener('click', (e) => {
+            
+        });
+    });
+}
 function playRound(playerChoiceVar,comChoiceVar){
     let winner;
-    let upperCasedChoice = playerChoiceVar.toUpperCase();
-    if (upperCasedChoice == comChoiceVar){
+    
+    if (playerChoiceVar == comChoiceVar){
         winner = "Its a Draw!";
-    }else if(upperCasedChoice == "ROCK"){
+    }else if(playerChoiceVar == "ROCK"){
         if(comChoiceVar == "PAPER"){
             winner = "You lost! Paper beats Rock.";
         }else{
             winner = "You win! Rock beats Scissors!";
         }
-    }else if(upperCasedChoice == "PAPER"){
+    }else if(playerChoiceVar == "PAPER"){
         if(comChoiceVar == "SCISSORS"){
             winner = "You lost! Scissors beats Paper.";
         }else{
             winner = "You win! Paper beats Rock!";
         }
-    }else if(upperCasedChoice == "SCISSORS"){
+    }else if(playerChoiceVar == "SCISSORS"){
         if(comChoiceVar == "ROCK"){
             winner = "You lost! Rock beats Scissors.";
         }else{
@@ -83,8 +90,9 @@ function playRound(playerChoiceVar,comChoiceVar){
 }
 
 function game(){
-    let comChoice = getComputerChoice();
-    let playerChoice = prompt("What is your chosen weapon?");
+    const comChoice = getComputerChoice();
+    console.log(comChoice);
+    const playerChoice = getPlayerChoice();
     playRound(playerChoice,comChoice);
     console.log(playRound);
 }
