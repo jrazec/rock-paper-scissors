@@ -43,9 +43,12 @@ craete a function called game
 
 
 */
-
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+  }
 function getComputerChoice(){
-    const comChoice = Math.random() * 10;
+    //const comChoice = Math.random() * 10;//since this returns 0 - 9 
+    const comChoice = getRndInteger(1,9);
     if (comChoice <= 3){
         return "ROCK";
     }else if (comChoice <= 6){
@@ -56,22 +59,20 @@ function getComputerChoice(){
 }
 
 function playRound(){
-    let winner;
-    
     const buttons = document.querySelectorAll('button');
+    const textAreaScore = document.querySelector('.score');
     let playerScore = 0;
     let computerScore = 0;
     buttons.forEach((button) => {//
-        const textAreaScore = document.querySelector('.score');
+        
         button.addEventListener('click', () => {//when clicked
+            
             let comChoice = getComputerChoice();
             console.log("computer:"+comChoice);
             const textArea = document.querySelector('#text');
-            textArea.classList.add('#textCont');
+            textArea.classList.add('.textCont');
             console.log("player:"+button.id);
             if (button.id == comChoice){
-                playerScore += 1;
-                computerScore+= 1;
                 textArea.textContent =  "Its a Draw!";
             }else if(button.id == "ROCK"){
                 if(comChoice == "PAPER"){
@@ -99,13 +100,28 @@ function playRound(){
                 }
             }
             textAreaScore.textContent = `Player = ${playerScore} | Computer = ${computerScore}`;
+           console.log(playerScore)
+            if(playerScore == 5 && computerScore == 5){
+                document.getElementById("ROCK").disabled = true;
+                document.getElementById("PAPER").disabled = true;
+                document.getElementById("SCISSORS").disabled = true;
+                textAreaScore.textContent = "DRAW!!";
+            }else if(playerScore == 5){
+                document.getElementById("ROCK").disabled = true;
+                document.getElementById("PAPER").disabled = true;
+                document.getElementById("SCISSORS").disabled = true;
+                textAreaScore.textContent = "You Won!!!!";
+            }else if(computerScore == 5){
+                document.getElementById("ROCK").disabled = true;
+                document.getElementById("PAPER").disabled = true;
+                document.getElementById("SCISSORS").disabled = true;
+                textAreaScore.textContent = "You Lose..";
+            }
         });
-        
+        textAreaScore.textContent = "Player = 0 | Computer = 0";//to be changed by the playerScore above
     });
-    return true;
+    
 }
-
-
 playRound();
 
 
