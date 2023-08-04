@@ -59,36 +59,48 @@ function playRound(){
     let winner;
     
     const buttons = document.querySelectorAll('button');
-    buttons.forEach((button) => {
-        button.addEventListener('click', () => {
+    let playerScore = 0;
+    let computerScore = 0;
+    buttons.forEach((button) => {//
+        const textAreaScore = document.querySelector('.score');
+        button.addEventListener('click', () => {//when clicked
             let comChoice = getComputerChoice();
             console.log("computer:"+comChoice);
-
             const textArea = document.querySelector('#text');
             textArea.classList.add('#textCont');
             console.log("player:"+button.id);
             if (button.id == comChoice){
+                playerScore += 1;
+                computerScore+= 1;
                 textArea.textContent =  "Its a Draw!";
             }else if(button.id == "ROCK"){
                 if(comChoice == "PAPER"){
+                    computerScore += 1;
                     textArea.textContent =  "You lost! Paper beats Rock.";
                 }else{
+                    playerScore += 1;
                     textArea.textContent =  "You win! Rock beats Scissors!";
                 }
             }else if(button.id == "PAPER"){
                 if(comChoice == "SCISSORS"){
+                    computerScore += 1;
                     textArea.textContent =  "You lost! Scissors beats Paper.";
                 }else{
+                    playerScore += 1;
                     textArea.textContent =  "You win! Paper beats Rock!";
                 }
             }else if(button.id == "SCISSORS"){
                 if(comChoice == "ROCK"){
+                    computerScore += 1;
                     textArea.textContent =  "You lost! Rock beats Scissors.";
                 }else{
+                    playerScore += 1;
                     textArea.textContent =  "You win! Scissors beats Paper!";
                 }
             }
+            textAreaScore.textContent = `Player = ${playerScore} | Computer = ${computerScore}`;
         });
+        
     });
     return true;
 }
