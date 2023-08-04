@@ -54,47 +54,47 @@ function getComputerChoice(){
         return "SCISSORS";
     }
 }
-function getPlayerChoice(){
+
+function playRound(comChoiceVar){
+    let winner;
     const buttons = document.querySelectorAll('button');
     buttons.forEach((button) => {
-        button.addEventListener('click', (e) => {
-            
+        button.addEventListener('click', () => {
+            const textArea = document.querySelector('#text');
+            textArea.classList.add('#textCont');
+
+            if (button.id == comChoiceVar){
+                textArea.textContent =  "Its a Draw!";
+            }else if(button.id == "ROCK"){
+                if(comChoiceVar == "PAPER"){
+                    textArea.textContent =  "You lost! Paper beats Rock.";
+                }else{
+                    textArea.textContent =  "You win! Rock beats Scissors!";
+                }
+            }else if(button.id == "PAPER"){
+                if(comChoiceVar == "SCISSORS"){
+                    textArea.textContent =  "You lost! Scissors beats Paper.";
+                }else{
+                    textArea.textContent =  "You win! Paper beats Rock!";
+                }
+            }else if(button.id == "SCISSORS"){
+                if(comChoiceVar == "ROCK"){
+                    textArea.textContent =  "You lost! Rock beats Scissors.";
+                }else{
+                    textArea.textContent =  "You win! Scissors beats Paper!";
+                }
+            }
         });
     });
-}
-function playRound(playerChoiceVar,comChoiceVar){
-    let winner;
     
-    if (playerChoiceVar == comChoiceVar){
-        winner = "Its a Draw!";
-    }else if(playerChoiceVar == "ROCK"){
-        if(comChoiceVar == "PAPER"){
-            winner = "You lost! Paper beats Rock.";
-        }else{
-            winner = "You win! Rock beats Scissors!";
-        }
-    }else if(playerChoiceVar == "PAPER"){
-        if(comChoiceVar == "SCISSORS"){
-            winner = "You lost! Scissors beats Paper.";
-        }else{
-            winner = "You win! Paper beats Rock!";
-        }
-    }else if(playerChoiceVar == "SCISSORS"){
-        if(comChoiceVar == "ROCK"){
-            winner = "You lost! Rock beats Scissors.";
-        }else{
-            winner = "You win! Scissors beats Paper!";
-        }
-    }
-    return winner;
+
 }
 
 function game(){
     const comChoice = getComputerChoice();
     console.log(comChoice);
-    const playerChoice = getPlayerChoice();
-    playRound(playerChoice,comChoice);
-    console.log(playRound);
+    playRound(comChoice);
+
 }
 
 game();
