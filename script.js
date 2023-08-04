@@ -55,30 +55,34 @@ function getComputerChoice(){
     }
 }
 
-function playRound(comChoiceVar){
+function playRound(){
     let winner;
+    
     const buttons = document.querySelectorAll('button');
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
+            let comChoice = getComputerChoice();
+            console.log("computer:"+comChoice);
+
             const textArea = document.querySelector('#text');
             textArea.classList.add('#textCont');
-
-            if (button.id == comChoiceVar){
+            console.log("player:"+button.id);
+            if (button.id == comChoice){
                 textArea.textContent =  "Its a Draw!";
             }else if(button.id == "ROCK"){
-                if(comChoiceVar == "PAPER"){
+                if(comChoice == "PAPER"){
                     textArea.textContent =  "You lost! Paper beats Rock.";
                 }else{
                     textArea.textContent =  "You win! Rock beats Scissors!";
                 }
             }else if(button.id == "PAPER"){
-                if(comChoiceVar == "SCISSORS"){
+                if(comChoice == "SCISSORS"){
                     textArea.textContent =  "You lost! Scissors beats Paper.";
                 }else{
                     textArea.textContent =  "You win! Paper beats Rock!";
                 }
             }else if(button.id == "SCISSORS"){
-                if(comChoiceVar == "ROCK"){
+                if(comChoice == "ROCK"){
                     textArea.textContent =  "You lost! Rock beats Scissors.";
                 }else{
                     textArea.textContent =  "You win! Scissors beats Paper!";
@@ -86,17 +90,11 @@ function playRound(comChoiceVar){
             }
         });
     });
-    
-
+    return true;
 }
 
-function game(){
-    const comChoice = getComputerChoice();
-    console.log(comChoice);
-    playRound(comChoice);
 
-}
+playRound();
 
-game();
 
 
