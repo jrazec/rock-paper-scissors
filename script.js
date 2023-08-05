@@ -50,11 +50,11 @@ function getComputerChoice(){
     //const comChoice = Math.random() * 10;//since this returns 0 - 9 
     const comChoice = getRndInteger(1,9);
     if (comChoice <= 3){
-        return "ROCK";
+        return "SLIPPER";
     }else if (comChoice <= 6){
-        return "PAPER";
+        return "HANGER";
     }else{
-        return "SCISSORS";
+        return "BELT";
     }
 }
 
@@ -74,47 +74,47 @@ function playRound(){//round starts every time the user pushes the button
             console.log("player:"+button.id);
             if (button.id == comChoice){
                 textArea.textContent =  "Its a Draw!";
-            }else if(button.id == "ROCK"){
-                if(comChoice == "PAPER"){
+            }else if(button.id == "SLIPPER"){
+                if(comChoice == "HANGER"){
                     computerScore += 1;
-                    textArea.textContent =  "You lost! Paper beats Rock.";
+                    textArea.textContent =  "You lost! HANGER beats SLIPPER.";
                 }else{
                     playerScore += 1;
-                    textArea.textContent =  "You win! Rock beats Scissors!";
+                    textArea.textContent =  "You win! SLIPPER beats BELT!";
                 }
-            }else if(button.id == "PAPER"){
-                if(comChoice == "SCISSORS"){
+            }else if(button.id == "HANGER"){
+                if(comChoice == "BELT"){
                     computerScore += 1;
-                    textArea.textContent =  "You lost! Scissors beats Paper.";
+                    textArea.textContent =  "You lost! BELT beats HANGER.";
                 }else{
                     playerScore += 1;
-                    textArea.textContent =  "You win! Paper beats Rock!";
+                    textArea.textContent =  "You win! HANGER beats SLIPPER!";
                 }
-            }else if(button.id == "SCISSORS"){
-                if(comChoice == "ROCK"){
+            }else if(button.id == "BELT"){
+                if(comChoice == "SLIPPER"){
                     computerScore += 1;
-                    textArea.textContent =  "You lost! Rock beats Scissors.";
+                    textArea.textContent =  "You lost! SLIPPER beats BELT.";
                 }else{
                     playerScore += 1;
-                    textArea.textContent =  "You win! Scissors beats Paper!";
+                    textArea.textContent =  "You win! BELT beats HANGER!";
                 }
             }
             textAreaScore.textContent = `Player = ${playerScore} | Computer = ${computerScore}`;
            console.log(playerScore)
             if(playerScore == 5 && computerScore == 5){
-                document.getElementById("ROCK").disabled = true;
-                document.getElementById("PAPER").disabled = true;
-                document.getElementById("SCISSORS").disabled = true;
+                document.getElementById("SLIPPER").disabled = true;
+                document.getElementById("HANGER").disabled = true;
+                document.getElementById("BELT").disabled = true;
                 textAreaScore.textContent = "DRAW!!";
             }else if(playerScore == 5){
-                document.getElementById("ROCK").disabled = true;
-                document.getElementById("PAPER").disabled = true;
-                document.getElementById("SCISSORS").disabled = true;
+                document.getElementById("SLIPPER").disabled = true;
+                document.getElementById("HANGER").disabled = true;
+                document.getElementById("BELT").disabled = true;
                 textAreaScore.textContent = "You Won!!!!";
             }else if(computerScore == 5){
-                document.getElementById("ROCK").disabled = true;
-                document.getElementById("PAPER").disabled = true;
-                document.getElementById("SCISSORS").disabled = true;
+                document.getElementById("SLIPPER").disabled = true;
+                document.getElementById("HANGER").disabled = true;
+                document.getElementById("BELT").disabled = true;
                 textAreaScore.textContent = "You Lose..";
             }
         });
