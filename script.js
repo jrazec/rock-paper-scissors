@@ -58,7 +58,7 @@ function getComputerChoice(){
     }
 }
 
-function playRound(){
+function playRound(){//round starts every time the user pushes the button
     const buttons = document.querySelectorAll('button');
     const textAreaScore = document.querySelector('.score');
     let playerScore = 0;
