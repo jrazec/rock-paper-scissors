@@ -43,85 +43,95 @@ craete a function called game
 
 
 */
-function getRndInteger(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) ) + min;
-  }
+let playerScore = 0;
+let computerScore = 0;
+
+
 function getComputerChoice(){
     //const comChoice = Math.random() * 10;//since this returns 0 - 9 
-    const comChoice = getRndInteger(1,9);
-    if (comChoice <= 3){
+    const comChoice = Math.floor(Math.random() * 3) + 1;
+    if (comChoice === 1){
         return "SLIPPER";
-    }else if (comChoice <= 6){
+    }else if (comChoice === 2){
         return "HANGER";
     }else{
         return "BELT";
     }
 }
 
+
+function compareChoice(button) {
+    let comChoice = getComputerChoice();
+    console.log("computer:"+comChoice);
+    const textArea = document.querySelector('#text');
+    textArea.classList.add('.textCont');
+    console.log("player:"+button.id);
+    if (button.id == comChoice){
+        textArea.textContent =  "Its a Draw!";
+    }else if(button.id == "SLIPPER"){
+        if(comChoice == "HANGER"){
+            computerScore += 1;
+            textArea.textContent =  "You lost! HANGER beats SLIPPER.";
+        }else{
+            playerScore += 1;
+            textArea.textContent =  "You win! SLIPPER beats BELT!";
+        }
+    }else if(button.id == "HANGER"){
+        if(comChoice == "BELT"){
+            computerScore += 1;
+            textArea.textContent =  "You lost! BELT beats HANGER.";
+        }else{
+            playerScore += 1;
+            textArea.textContent =  "You win! HANGER beats SLIPPER!";
+        }
+    }else if(button.id == "BELT"){
+        if(comChoice == "SLIPPER"){
+            computerScore += 1;
+            textArea.textContent =  "You lost! SLIPPER beats BELT.";
+        }else{
+            playerScore += 1;
+            textArea.textContent =  "You win! BELT beats HANGER!";
+        }
+    }
+}
+
+
+function endRound(textAreaScore){
+    if(playerScore == 5 && computerScore == 5){
+        document.getElementById("SLIPPER").disabled = true;
+        document.getElementById("HANGER").disabled = true;
+        document.getElementById("BELT").disabled = true;
+        textAreaScore.textContent = "DRAW!!";
+    }else if(playerScore == 5){
+        document.getElementById("SLIPPER").disabled = true;
+        document.getElementById("HANGER").disabled = true;
+        document.getElementById("BELT").disabled = true;
+        textAreaScore.textContent = "You Won!!!!";
+    }else if(computerScore == 5){
+        document.getElementById("SLIPPER").disabled = true;
+        document.getElementById("HANGER").disabled = true;
+        document.getElementById("BELT").disabled = true;
+        textAreaScore.textContent = "You Lose..";
+    }
+}
+
+
 function playRound(){//round starts every time the user pushes the button
     const buttons = document.querySelectorAll('button');
     const textAreaScore = document.querySelector('.score');
-    let playerScore = 0;
-    let computerScore = 0;
+
     buttons.forEach((button) => {//
-        
         button.addEventListener('click', () => {//when clicked
-            
-            let comChoice = getComputerChoice();
-            console.log("computer:"+comChoice);
-            const textArea = document.querySelector('#text');
-            textArea.classList.add('.textCont');
-            console.log("player:"+button.id);
-            if (button.id == comChoice){
-                textArea.textContent =  "Its a Draw!";
-            }else if(button.id == "SLIPPER"){
-                if(comChoice == "HANGER"){
-                    computerScore += 1;
-                    textArea.textContent =  "You lost! HANGER beats SLIPPER.";
-                }else{
-                    playerScore += 1;
-                    textArea.textContent =  "You win! SLIPPER beats BELT!";
-                }
-            }else if(button.id == "HANGER"){
-                if(comChoice == "BELT"){
-                    computerScore += 1;
-                    textArea.textContent =  "You lost! BELT beats HANGER.";
-                }else{
-                    playerScore += 1;
-                    textArea.textContent =  "You win! HANGER beats SLIPPER!";
-                }
-            }else if(button.id == "BELT"){
-                if(comChoice == "SLIPPER"){
-                    computerScore += 1;
-                    textArea.textContent =  "You lost! SLIPPER beats BELT.";
-                }else{
-                    playerScore += 1;
-                    textArea.textContent =  "You win! BELT beats HANGER!";
-                }
-            }
+            compareChoice(button);
             textAreaScore.textContent = `Player = ${playerScore} | Computer = ${computerScore}`;
-           console.log(playerScore)
-            if(playerScore == 5 && computerScore == 5){
-                document.getElementById("SLIPPER").disabled = true;
-                document.getElementById("HANGER").disabled = true;
-                document.getElementById("BELT").disabled = true;
-                textAreaScore.textContent = "DRAW!!";
-            }else if(playerScore == 5){
-                document.getElementById("SLIPPER").disabled = true;
-                document.getElementById("HANGER").disabled = true;
-                document.getElementById("BELT").disabled = true;
-                textAreaScore.textContent = "You Won!!!!";
-            }else if(computerScore == 5){
-                document.getElementById("SLIPPER").disabled = true;
-                document.getElementById("HANGER").disabled = true;
-                document.getElementById("BELT").disabled = true;
-                textAreaScore.textContent = "You Lose..";
-            }
+            console.log(playerScore)
+            endRound(textAreaScore);
         });
         textAreaScore.textContent = "Player = 0 | Computer = 0";//to be changed by the playerScore above
-    });
-    
+    }); 
 }
+
+
 playRound();
 
 
