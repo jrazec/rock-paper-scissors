@@ -155,19 +155,22 @@ function endRound(textAreaScore){
 
 function playRound(){//round starts every time the user pushes the button
     const buttons = document.querySelectorAll('button');
-    const textAreaScore = document.querySelector('.score');
+    const playerScoreText = document.querySelector('.player-score');
+    const computerScoreText = document.querySelector('.computer-score');
     const computerWeapon = document.querySelector('.computer-weapon');
     const playerWeapon = document.querySelector('.player-weapon'); 
-    textAreaScore.classList.add('.score-area');
+
     buttons.forEach((button) => {//
         button.addEventListener('click', () => {//when clicked
             compareChoice(button);
-            textAreaScore.textContent = `Player = ${playerScore}       Computer = ${computerScore}`;
-            console.log(playerScore)
-            endRound(textAreaScore);
+            playerScoreText.textContent = `Player = ${playerScore}`;
+            computerScoreText.textContent = `Computer = ${computerScore}`;
+            console.log(playerScoreText,computerScoreText)
+            endRound(playerScore);
         });
-        textAreaScore.setAttribute('style','font-size: 30px; font-weight:600;');
-        textAreaScore.textContent = "Player = 0  | Computer = 0";//to be changed by the playerScore above
+        playerScoreText.setAttribute('style','font-size: 30px; font-weight:600;');
+        computerScoreText.setAttribute('style','font-size: 30px; font-weight:600;');
+        
         
     }); 
 }
