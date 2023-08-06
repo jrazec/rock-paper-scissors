@@ -8,37 +8,57 @@
     <!--CSS FONTS-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto:ital,wght@0,100;0,300;0,900;1,100&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,600;0,800;1,300;1,400&family=Roboto:ital,wght@0,100;0,300;0,900;1,100&display=swap" rel="stylesheet">
+    <!--JAVASCRIPT-->
+    <script src="script.js" defer></script>
+
     <title>Rock Paper SISORS</title>
 </head>
 <body>
 
    <div class="container">
-    <div class="score"></div>
-        
-        <hr>
-        <!--
-            Here, i plan to add Players once the player chose 
-            his/her weapon, it will pop-up sa screen and automatically
-            show the weapon that is lost or nanalo na state
-        -->
-        <div id="choice">
-            <div class="chosen-weapon" ><img src="/pictures/base-weapon.png" id="player-choice"></div>
-            <div class="chosen-weapon" ><img src="/pictures/base-weapon-comp.png" id="computer-choice"></div>
-            
+        <div class="header">
+            <div class="game-title"> Fight for your Rice!  : A Rock Paper Scissor's Inspired Game</div>
+            <div class="game-info">
+                <p>What if a Computer has come into life and took all your rice?</p>
+                <p>What if your typical asian mom's weapons have turned into pocket monsters? Do you have the odds to maneuver them and fight for your rice?</p>
+                <p id="tagline">Now, Gear Up, Pick your weapon and Defeat the Computer that stole your rice!</p>
+                <a href="#text"><img src="pictures/player-win.png" alt=""></a>
+            </div>
         </div>
-        <hr>
+        
+    <hr>
+        
+        
+    <hr>
+        <div class="score"></div>
+        <div>
+            <div id="choice">
+                <div class="chosen-weapon" ><img src="/pictures/base-weapon.png" id="player-choice"></div>
+                <div class="chosen-weapon" ><img src="/pictures/base-weapon-comp.png" id="computer-choice"></div>
+            </div>
+            <div id="text"></div>
+        </div>
+    <hr>
         <div class="weapon-container">
-            <button id="slipper"><img src="/pictures/p-slipper-weapon.png" alt=""></button>
-            <button id="hanger"><img src="/pictures/p-hanger-weapon.png" alt=""></button>
-            <button id="belt"><img src="/pictures/p-belt-weapon.png" alt=""></button>
+            <div>
+                <p>FlipFrog</p>
+                <button class="btns" id="slipper"><img class="img-btn" src="/pictures/p-slipper-weapon.png" alt=""></button>
+            </div>
+            <div>
+                <p>Hangry Bird</p>
+                <button class="btns" id="hanger"><img class="img-btn" src="/pictures/p-hanger-weapon.png" alt=""></button>
+            </div>
+            <div>
+                <p>BeLake</p>
+                <button class="btns"id="belt"><img class="img-btn" src="/pictures/p-belt-weapon.png" alt=""></button>
+            </div>
         </div>
-        <div id="text"></div>
-        
-   </div>
-
-
-    <script src="script.js"></script>
+    </div>
+    <footer>
+        <h2>---TO BE CONTINUED--- </h2>
+         <p>pag sinipag MUAAHHAHAH</p>
+    </footer>
+    
 </body>
 </html>

@@ -6,8 +6,83 @@ body {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='46' height='46' fill-opacity='0.6' fill='%23ffa61d'/%3E%3C/svg%3E");
     background-size:auto;
     background-attachment: fixed;
+    padding: 0;
+    margin:0;
 }
+
 #choice {
     display: flex;
     justify-content: center;
+    align-items: center;
+    background-color: #c47a25d0;
+    height: 380px;
+    gap: 60px;
+}
+.header {
+    text-align: center;
+}
+.game-title {
+    font-size: 50px;
+    font-weight: 700;
+    background-color:#e69d15af;
+    padding: 50px;
+}
+.game-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    background-color: #c47a25be;
+    margin: 0;
+    padding: 30px;
+}
+p {
+    margin: 10px;
+}
+#tagline {
+    font-weight: 600;
+    font-size: 30px;
+}
+img {
+    width: 300px;
+    height: 300px;
+}
+hr {
+    border-color:#c47a2500;
+}
+.score {
+    height: 50px;
+    background-color:  #f29e03;
+    text-align: center;
+}
+.weapon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height: 300px;
+}
+.btns,
+.img-btn {
+    width: 200px;
+    height: 200px;
+}
+.btns {
+    background-color: rgba(77, 55, 15, 0.219);
+    border: none;
+    border-radius: 30px;
+    margin: 10px;
+}
+footer {
+    background-color: rgba(87, 87, 87, 0.5);
+    height: 100px;
+    text-align: center;
+    padding-top: 20px;
+}
+#text {
+    text-align: center;
+    font-size: 50px;
+    background-color: #c47a25be;
+    padding: 15px;
 }

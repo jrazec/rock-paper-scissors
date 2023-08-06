@@ -158,15 +158,17 @@ function playRound(){//round starts every time the user pushes the button
     const textAreaScore = document.querySelector('.score');
     const computerWeapon = document.querySelector('.computer-weapon');
     const playerWeapon = document.querySelector('.player-weapon'); 
-
+    textAreaScore.classList.add('.score-area');
     buttons.forEach((button) => {//
         button.addEventListener('click', () => {//when clicked
             compareChoice(button);
-            textAreaScore.textContent = `Player = ${playerScore} | Computer = ${computerScore}`;
+            textAreaScore.textContent = `Player = ${playerScore}       Computer = ${computerScore}`;
             console.log(playerScore)
             endRound(textAreaScore);
         });
-        textAreaScore.textContent = "Player = 0 | Computer = 0";//to be changed by the playerScore above
+        textAreaScore.setAttribute('style','font-size: 30px; font-weight:600;');
+        textAreaScore.textContent = "Player = 0  | Computer = 0";//to be changed by the playerScore above
+        
     }); 
 }
 
