@@ -51,14 +51,23 @@ function getComputerChoice(){
     //const comChoice = Math.random() * 10;//since this returns 0 - 9 
     const comChoice = Math.floor(Math.random() * 3) + 1;
     if (comChoice === 1){
-        return "SLIPPER";
+        return "slipper";
     }else if (comChoice === 2){
-        return "HANGER";
+        return "hanger";
     }else{
-        return "BELT";
+        return "belt";
     }
 }
+function showWeapon(plChoice, comChoice, plState, comState){
+    
+    const computerWeaponState = document.querySelector('#computer-choice');
+    computerWeaponState.setAttribute('src',`/pictures/c-${comChoice}-${comState}.png`);
 
+
+    const playerWeaponState = document.querySelector('#player-choice');
+    playerWeaponState.setAttribute('src',`/pictures/p-${plChoice}-${plState}.png`);
+
+}
 
 function compareChoice(button) {
     let comChoice = getComputerChoice();
@@ -66,51 +75,79 @@ function compareChoice(button) {
     const textArea = document.querySelector('#text');
     textArea.classList.add('.textCont');
     console.log("player:"+button.id);
+
+    let comState;
+    let plState; 
     if (button.id == comChoice){
         textArea.textContent =  "Its a Draw!";
-    }else if(button.id == "SLIPPER"){
-        if(comChoice == "HANGER"){
+
+        comState = "win";
+        plState = "win";
+        showWeapon(button.id, comChoice,plState,comState);
+    }else if(button.id == "slipper"){
+        if(comChoice == "hanger"){
             computerScore += 1;
-            textArea.textContent =  "You lost! HANGER beats SLIPPER.";
+            textArea.textContent =  "You lost! hanger beats slipper.";
+
+            comState = "win";
+            plState = "lost";
         }else{
             playerScore += 1;
-            textArea.textContent =  "You win! SLIPPER beats BELT!";
+            textArea.textContent =  "You win! slipper beats belt!";
+            
+            comState = "lost";
+            plState = "win";
         }
-    }else if(button.id == "HANGER"){
-        if(comChoice == "BELT"){
+        showWeapon(button.id, comChoice,plState,comState);
+    }else if(button.id == "hanger"){
+        if(comChoice == "belt"){
             computerScore += 1;
-            textArea.textContent =  "You lost! BELT beats HANGER.";
+            textArea.textContent =  "You lost! belt beats hanger.";
+
+            comState = "win";
+            plState = "lost";
         }else{
             playerScore += 1;
-            textArea.textContent =  "You win! HANGER beats SLIPPER!";
+            textArea.textContent =  "You win! hanger beats slipper!";
+
+            comState = "lost";
+            plState = "win";
         }
-    }else if(button.id == "BELT"){
-        if(comChoice == "SLIPPER"){
+        showWeapon(button.id, comChoice,plState,comState);
+    }else if(button.id == "belt"){
+        if(comChoice == "slipper"){
             computerScore += 1;
-            textArea.textContent =  "You lost! SLIPPER beats BELT.";
+            textArea.textContent =  "You lost! slipper beats belt.";
+
+            comState = "win";
+            plState = "lost";
         }else{
             playerScore += 1;
-            textArea.textContent =  "You win! BELT beats HANGER!";
+            textArea.textContent =  "You win! belt beats hanger!";
+
+            comState = "lost";
+            plState = "win";
         }
+        showWeapon(button.id, comChoice,plState,comState);
     }
 }
 
 
 function endRound(textAreaScore){
     if(playerScore == 5 && computerScore == 5){
-        document.getElementById("SLIPPER").disabled = true;
-        document.getElementById("HANGER").disabled = true;
-        document.getElementById("BELT").disabled = true;
+        document.getElementById("slipper").disabled = true;
+        document.getElementById("hanger").disabled = true;
+        document.getElementById("belt").disabled = true;
         textAreaScore.textContent = "DRAW!!";
     }else if(playerScore == 5){
-        document.getElementById("SLIPPER").disabled = true;
-        document.getElementById("HANGER").disabled = true;
-        document.getElementById("BELT").disabled = true;
+        document.getElementById("slipper").disabled = true;
+        document.getElementById("hanger").disabled = true;
+        document.getElementById("belt").disabled = true;
         textAreaScore.textContent = "You Won!!!!";
     }else if(computerScore == 5){
-        document.getElementById("SLIPPER").disabled = true;
-        document.getElementById("HANGER").disabled = true;
-        document.getElementById("BELT").disabled = true;
+        document.getElementById("slipper").disabled = true;
+        document.getElementById("hanger").disabled = true;
+        document.getElementById("belt").disabled = true;
         textAreaScore.textContent = "You Lose..";
     }
 }
@@ -119,6 +156,8 @@ function endRound(textAreaScore){
 function playRound(){//round starts every time the user pushes the button
     const buttons = document.querySelectorAll('button');
     const textAreaScore = document.querySelector('.score');
+    const computerWeapon = document.querySelector('.computer-weapon');
+    const playerWeapon = document.querySelector('.player-weapon'); 
 
     buttons.forEach((button) => {//
         button.addEventListener('click', () => {//when clicked
