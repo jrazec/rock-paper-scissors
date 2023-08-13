@@ -61,11 +61,11 @@ function getComputerChoice(){
 function showWeapon(plChoice, comChoice, plState, comState){
     
     const computerWeaponState = document.querySelector('#computer-choice');
-    computerWeaponState.setAttribute('src',`/pictures/c-${comChoice}-${comState}.png`);
+    computerWeaponState.setAttribute('src',`pictures/c-${comChoice}-${comState}.png`);
 
 
     const playerWeaponState = document.querySelector('#player-choice');
-    playerWeaponState.setAttribute('src',`/pictures/p-${plChoice}-${plState}.png`);
+    playerWeaponState.setAttribute('src',`pictures/p-${plChoice}-${plState}.png`);
 
 }
 
